@@ -65,6 +65,7 @@ export class BoissonListComponent implements OnInit {
   addBoisson(boisson: Boisson): void{
     window.localStorage.removeItem("addBoissonId");
     window.localStorage.setItem("addBoissonId", boisson.id.toString());
+    console.log(boisson.id);
 
     this.router.navigate(['add-boisson'])
   }

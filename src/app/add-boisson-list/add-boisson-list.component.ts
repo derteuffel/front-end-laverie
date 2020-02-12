@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AjoutBoisson } from '../_models/ajout-boisson';
+import { Ajout } from '../_models/ajout';
 import { Boisson } from '../_models/boisson';
 import { Observable, from } from 'rxjs';
 import { Router } from '@angular/router';
@@ -14,11 +14,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
   styleUrls: ['./add-boisson-list.component.css']
 })
 export class AddBoissonListComponent implements OnInit {
-  ajoutBoisson: AjoutBoisson = new AjoutBoisson();
+  ajoutBoisson: Ajout = new Ajout();
 
-  ajouts:Observable<AjoutBoisson[]>;
+  ajouts:Observable<Ajout[]>;
   id:number;
-  boisson: Observable<Boisson>;
+  boisson: Observable<any>;
 
 
   constructor(private ajoutsService: AjoutBoissonService,
@@ -34,8 +34,10 @@ export class AddBoissonListComponent implements OnInit {
   }
 
   reloadData(){
+    console.log(this.id+"voila");
     this.ajouts = this.ajoutsService.getAllAddsByBoisson(this.id);
     console.log(this.ajouts);
+    console.log("je suis")
     console.log(this.id);
   }
 
@@ -48,7 +50,7 @@ export class AddBoissonListComponent implements OnInit {
       },
       error => console.log(error)
     );
-    this.ajoutBoisson = new AjoutBoisson();
+    this.ajoutBoisson = new Ajout();
   }
 
   onSubmit(){

@@ -21,8 +21,8 @@ import { Observable } from 'rxjs';
         return this.http.get(`${this.BASE_URL}/${id}`);
     }
 
-    createAdds(ajoutBoisson: any, id: number): Observable<any> {
-        return this.http.post(`${this.BASE_URL}/${id}`, ajoutBoisson);
+    createAdds(ajout: any, id: number): Observable<any> {
+        return this.http.post(`${this.BASE_URL}/${id}`, ajout);
       }
 
       deleteAdds(id:number): Observable<any> {
