@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="alert-info text-center">
+            <h3>Ensemble des mises a jours d'un produit </h3>
+    </div>
+
+    <div class="row">
+        <div id="form" class="card col-md-4">
+                <div class="card-header">
+                    <h3>Mettre a jour le stock <span>{{boisson.name}}</span></h3>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()">
+                           
+                            <div class="form-group">
+                                <label for="quantite">Quantite de boisson </label>
+                                <input type="number" class="form-control" id="quantite" required [(ngModel)]="ajoutBoisson.quantite" name="quantite">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Observations</label>
+                                <textarea name="comment" id="comment" class="form-control" required [(ngModel)]="ajoutBoisson.comment" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                    </form>
+                </div>
+        </div>
+        <div class="card col-md-8">
+                <table datatable class="display table table-striped text-center table-hover" >
+                    <thead >
+                        <th>Noms</th>
+                        <th>Commentaires</th>
+                        <th>Qte ajouter</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ajout of ajouts| async | paginate: { itemsPerPage:5, currentPage: p }">
+                            <td>{{ajout.name}}</td>
+                            <td>{{ajout.comment}}</td>
+                            <td>{{ajout.quantite}}</td>
+                            <td>
+                                <button  class="tb_btn btn btn-primary mx-2"><i class="fa fa-pencil-square-o "></i></button>
+                                <button  class="tb_btn btn btn-success  mx-2"><i class="fa fa-eye "></i></button>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls class="myPagination"
+                (pageChange)="p=$event"
+                previousLabel="Prec"
+                nextLabel="Suiv"
+                maxSize="4"
+                ></pagination-controls>
+        </div>
+    </div>
+
+</div>
