@@ -13,22 +13,24 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoissonListComponent } from './boisson-list/boisson-list.component';
-import { SearchBoissonComponent } from './search-boisson/search-boisson.component';
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 import { BoissonUpdateComponent } from './boisson-update/boisson-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBoissonListComponent } from './add-boisson-list/add-boisson-list.component';
 import { AjoutUpdateComponent } from './ajout-update/ajout-update.component';
+import { FactureBoissonListComponent } from './facture-boisson-list/facture-boisson-list.component';
+import { FactureBoissonDetailComponent } from './facture-boisson-detail/facture-boisson-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoissonListComponent,
-    SearchBoissonComponent,
     BoissonUpdateComponent,
     AddBoissonListComponent,
-    AjoutUpdateComponent
+    AjoutUpdateComponent,
+    FactureBoissonListComponent,
+    FactureBoissonDetailComponent
     
   ],
   imports: [

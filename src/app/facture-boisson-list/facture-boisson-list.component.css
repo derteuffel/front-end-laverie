@@ -1,0 +1,7 @@
+.myPagination /deep/ .ngx-pagination .current{
+    border-radius: 50%;
+}
+
+.tb_btn{
+    border-radius: 50%;
+}

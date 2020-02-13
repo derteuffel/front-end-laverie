@@ -1,0 +1,58 @@
+<div class="container">
+        <div class="alert-info text-center">
+                <h3>Gestion des factures </h3>
+        </div>
+        <div class="card ">
+            <div class="card-header row" style="margin: 15px">
+                <div class="col-md-6 py-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Rechercher ici ..." [(ngModel)]="term">
+                        </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <form (ngSubmit)="onSubmit()">
+                            <h4>Nouvelle facture</h4>  
+                        <div class="row">      
+                            <div class="form-group mx-2">
+                                <input type="number" class="form-control" id="numTable" required [(ngModel)]="facture.numTable" name="numTable" placeholder="Numero de table...">
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="tb_btn btn btn-success"><i class="fa fa-check"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-1">
+                    <table  class="display table table-striped text-center table-hover" style="overflow: scroll" >
+                        <thead >
+                            <th>Numero table</th>
+                            <th>Numero facture</th>
+                            <th>Date</th>
+                            <th>Montant total</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of factures| async | paginate: { itemsPerPage:7, currentPage: p } | filter:term">
+                                <td>{{item.numTable}}</td>
+                                <td>{{item.numeroFacture}}</td>
+                                <td>{{item.dateJour}}</td>
+                                <td>{{item.montantTotal}}</td>
+                                <td>
+                                    <button (click)='detailFacture(item)' class=" tb_btn btn btn-success  mx-2"><i class="fa fa-eye"></i></button>
+                                    <button   class="tb_btn btn btn-danger  mx-2"  ><i class="fa fa-close "></i></button> 
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls class="myPagination"
+                    (pageChange)="p=$event"
+                    previousLabel="Prec"
+                    nextLabel="Suiv"
+                    maxSize="4"
+                    ></pagination-controls>
+        </div>
+    
+    </div>

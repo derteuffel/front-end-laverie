@@ -1,5 +1,22 @@
+<div>
+   <!--  Remove dark nav  -->
+   <nav class="nav dark-nav">
+      <div class="container">
+        <div class="nav-heading">
+          <button class="toggle-nav" data-toggle="open-navbar1"><i class="fa fa-align-right"></i></button>
+          <a class="brand" routerLink="boissons"  href="#">ROJAMAN</a>
+        </div>
+        <div class="menu" id="open-navbar1">
+          <ul class="list">
+            <li><a class="nav-link btn" routerLink="facture-boisson-list" routerLinkActive="active">Accueil</a></li>
+            
+            <li><a class="nav-link btn" routerLink="boissons" routerLinkActive="active">Stock-boissons</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
 <div style="padding: 20px;">
-
-  
   <router-outlet></router-outlet>
+</div>
 </div>

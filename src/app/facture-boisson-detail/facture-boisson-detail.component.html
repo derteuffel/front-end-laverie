@@ -1,0 +1,48 @@
+<div class="container">
+        <div class="alert-info text-center">
+                <h3>Facture Numero: <span>{{facture.numeroFacture}}</span> </h3>
+        </div>
+        <div class="card ">
+            <div class="card-header row" style="margin: 15px">
+                <div class="col-md-6 py-3">
+                    <h3>Table Numero :  <span>{{facture.numTable}}</span></h3>
+                </div>
+                <div class="col-md-6 text-center">
+                   <h3>{{facture.titreFacture}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-1">
+                    <table  class="display table table-striped text-center table-hover" style="overflow: scroll" >
+                        <thead >
+                            <th>Nom</th>
+                            <th>Quantite</th>
+                            <th>Prix_U</th>
+                            <th>Prix_T</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of articles| async | paginate: { itemsPerPage:7, currentPage: p } ">
+                                <td>{{item.name}}</td>
+                                <td>{{item.quantite}}</td>
+                                <td>{{item.prixU}}</td>
+                                <td>{{item.prixT}}</td>
+                                <td>
+                                    <button (click)='addItem(item.id)' class=" tb_btn btn btn-success  mx-2"><i class="fa fa-plus"></i></button>
+                                    <button  (click)='removeItem(item.id)' class="tb_btn btn btn-danger  mx-2"  ><i class="fa fa-minus"></i></button> 
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls class="myPagination"
+                    (pageChange)="p=$event"
+                    previousLabel="Prec"
+                    nextLabel="Suiv"
+                    maxSize="4">
+                    </pagination-controls>
+        </div>
+        <br>
+        <button (click)='add()' type="button" class="btn btn-primary">Ajouter une conso <i class="fa fa-plus"></i></button>
+    
+    </div>
