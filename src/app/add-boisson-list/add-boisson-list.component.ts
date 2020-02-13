@@ -29,16 +29,11 @@ export class AddBoissonListComponent implements OnInit {
     this.id = +window.localStorage.getItem("addBoissonId");
     this.reloadData();
     this.boisson = this.boissonService.getBoisson(this.id);
-    console.log(this.id);
 
   }
 
   reloadData(){
-    console.log(this.id+"voila");
     this.ajouts = this.ajoutsService.getAllAddsByBoisson(this.id);
-    console.log(this.ajouts);
-    console.log("je suis")
-    console.log(this.id);
   }
 
   save(){
@@ -55,6 +50,16 @@ export class AddBoissonListComponent implements OnInit {
 
   onSubmit(){
     this.save();
+  }
+
+  editAjout(ajout: Ajout): void{
+
+    window.localStorage.removeItem("editId");
+    window.localStorage.removeItem("boissonId");
+
+    window.localStorage.setItem("editId", ajout.id.toString());
+    window.localStorage.setItem("boissonId", this.id.toString());
+    this.router.navigate(['ajout-update']);
   }
 
 }

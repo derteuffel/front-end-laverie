@@ -2,7 +2,13 @@
     <div class="alert-info text-center">
             <h3>Gestion du stock de boissons </h3>
     </div>
-
+    <div class="card card-header row justify-content-right">
+        <div class="col-md-6 ">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Rechercher ici ..." [(ngModel)]="term">
+                </div>
+        </div>
+    </div>
     <div class="row">
         <div id="form" class="card col-md-4">
                 <div class="card-header">
@@ -10,49 +16,59 @@
                 </div>
                 <div class="card-body">
                     <form (ngSubmit)="onSubmit()">
-                            <div class="form-group">
-                            <label for="name">Nom de la boisson</label>
-                            <input type="text" class="form-control" id="name" required [(ngModel)]="boisson.name" name="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="quantite">Quantite de boisson </label>
-                                <input type="number" class="form-control" id="quantite" required [(ngModel)]="boisson.quantite" name="quantite">
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Prix de la boisson</label>
-                                <input type="number" class="form-control" id="price" required [(ngModel)]="boisson.price" name="price">
-                            </div>
-                        
-                            <div class="form-group">
-                            <label for="type">Type de boisson</label>
-                            <select name="type" id="type" class="form-control" [(ngModel)]="boisson.type" name="type">
-                                <option value="" selected>Choisis un type de boisson</option>
-                                <option value="JUS">JUS</option>
-                                <option value="BIERE">BIERE</option>
-                                <option value="EAU">EAU</option>
-                                <option value="AUTRE">AUTRE</option>
-                                </select>
-                            </div>
-                        
-                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                        <div class="form-group">
+                        <label for="name">Nom de la boisson</label>
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="boisson.name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="nbreCasier">Nombre de casier </label>
+                            <input type="number" class="form-control" id="nbreCasier" required [(ngModel)]="boisson.nbreCasier" name="nbreCasier">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Prix de la boisson</label>
+                            <input type="number" class="form-control" id="price" required [(ngModel)]="boisson.price" name="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model </label>
+                            <select name="model" id="model" class="form-control" [(ngModel)]="boisson.model" name="model">
+                                <option value="" selected>Choisir un model</option>
+                                <option value="PETIT">PETIT MODEL</option>
+                                <option value="GRAND">GRAND MODEL</option>
+                                <option value="STANDART">STANDART</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        <label for="type">Type de boisson</label>
+                        <select name="type" id="type" class="form-control" [(ngModel)]="boisson.type" name="type">
+                            <option value="" selected>Choisis un type de boisson</option>
+                            <option value="JUS">JUS</option>
+                            <option value="BIERE">BIERE</option>
+                            <option value="EAU">EAU</option>
+                            <option value="AUTRE">AUTRE</option>
+                            </select>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
                     </form>
                 </div>
         </div>
         <div class="card col-md-8">
-                <table datatable class="display table table-striped text-center table-hover" >
+                <table  class="display table table-striped text-center table-hover" style="overflow: scroll" >
                     <thead >
                         <th>Nom</th>
                         <th>Type</th>
                         <th>Prix U</th>
                         <th>Qte en stock</th>
+                        <th>Model</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let boisson of boissons| async | paginate: { itemsPerPage:5, currentPage: p }">
+                        <tr *ngFor="let boisson of boissons| async | paginate: { itemsPerPage:7, currentPage: p } | filter:term">
                             <td>{{boisson.name}}</td>
                             <td>{{boisson.type}}</td>
                             <td>{{boisson.price}}</td>
                             <td>{{boisson.quantite}}</td>
+                            <td>{{boisson.model}}</td>
                             <td>
                                 <button (click)='editBoisson(boisson)' class="tb_btn btn btn-primary mx-2"><i class="fa fa-pencil-square-o "></i></button>
                                 <button (click)='addBoisson(boisson)' class=" tb_btn btn btn-success  mx-2"><i class="fa fa-cloud-download"></i></button>

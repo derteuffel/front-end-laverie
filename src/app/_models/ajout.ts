@@ -1,7 +1,7 @@
 export class Ajout {
     id: number;
     name: string;
-    date:Date;
+    dateJour:string;
     comment: string;
     quantite: number;
 }

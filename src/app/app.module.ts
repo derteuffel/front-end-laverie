@@ -5,14 +5,13 @@ import { AngularMaterialModule } from './angular-material.module';
 import { DataTablesModule } from 'angular-datatables';
 import { CommonModule } from '@angular/common'; 
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateBoissonComponent } from './create-boisson/create-boisson.component';
-import { BoissonDetailComponent } from './boisson-detail/boisson-detail.component';
 import { BoissonListComponent } from './boisson-list/boisson-list.component';
 import { SearchBoissonComponent } from './search-boisson/search-boisson.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,16 +19,17 @@ import { from } from 'rxjs';
 import { BoissonUpdateComponent } from './boisson-update/boisson-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBoissonListComponent } from './add-boisson-list/add-boisson-list.component';
+import { AjoutUpdateComponent } from './ajout-update/ajout-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateBoissonComponent,
-    BoissonDetailComponent,
     BoissonListComponent,
     SearchBoissonComponent,
     BoissonUpdateComponent,
-    AddBoissonListComponent
+    AddBoissonListComponent,
+    AjoutUpdateComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -40,7 +40,8 @@ import { AddBoissonListComponent } from './add-boisson-list/add-boisson-list.com
     HttpClientModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

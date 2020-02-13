@@ -19,7 +19,7 @@
                                 <label for="comment">Observations</label>
                                 <textarea name="comment" id="comment" class="form-control" required [(ngModel)]="ajoutBoisson.comment" rows="5"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                            <button type="submit" class="btn btn-success">Enregistrer <i class="fa fa-check"></i></button>
                     </form>
                 </div>
         </div>
@@ -37,10 +37,9 @@
                             <td>{{ajout.name}}</td>
                             <td>{{ajout.comment}}</td>
                             <td>{{ajout.quantite}}</td>
-                            <td>{{ajout.date | date}}</td>
+                            <td>{{ajout.dateJour}}</td>
                             <td>
-                                <button  class="tb_btn btn btn-primary mx-2"><i class="fa fa-pencil-square-o "></i></button>
-                                <button  class="tb_btn btn btn-success  mx-2"><i class="fa fa-eye "></i></button>
+                                <button (click)='editAjout(ajout)' class="tb_btn btn btn-primary mx-2"><i class="fa fa-pencil-square-o "></i></button>
                             </td>
                             
                         </tr>

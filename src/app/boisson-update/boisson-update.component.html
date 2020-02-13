@@ -1,34 +1,46 @@
-<div id="form" class="card col-md-4">
-    <div class="card-header">
-        <h3>Mise a jour d'une boisson</h3>
-    </div>
-    <div class="card-body">
-        <form (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                <label for="name">Nom de la boisson</label>
-                <input type="text" class="form-control" id="name" required [(ngModel)]="boisson.name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="quantite">Quantite de boisson </label>
-                    <input type="number" class="form-control" id="quantite" required [(ngModel)]="boisson.quantite" name="quantite">
-                </div>
-                <div class="form-group">
-                    <label for="price">Prix de la boisson</label>
-                    <input type="number" class="form-control" id="price" required [(ngModel)]="boisson.price" name="price">
-                </div>
-            
-                <div class="form-group">
-                <label for="type">Type de boisson</label>
-                <select name="type" id="type" class="form-control" [(ngModel)]="boisson.type" name="type">
-                    <option value="" selected>Choisis un type de boisson</option>
-                    <option value="JUS">JUS</option>
-                    <option value="BIERE">BIERE</option>
-                    <option value="EAU">EAU</option>
-                    <option value="AUTRE">AUTRE</option>
-                    </select>
-                </div>
-            
-                <button type="submit" class="btn btn-success">Enregistrer</button>
-        </form>
+<div  class="container">
+    <div class="row justify-content-center">
+        <div id="form" class="card col-md-8">
+            <div class="card-header">
+                <h3>Mise a jour d'une boisson</h3>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                        <label for="name">Nom de la boisson</label>
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="boisson.name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="nbreCasier">Nombre de casier </label>
+                            <input type="number" class="form-control" id="nbreCasier" required [(ngModel)]="boisson.nbreCasier" name="nbreCasier">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Prix de la boisson</label>
+                            <input type="number" class="form-control" id="price" required [(ngModel)]="boisson.price" name="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model </label>
+                            <select name="model" id="model" class="form-control" [(ngModel)]="boisson.model" name="model">
+                                <option value="" selected>Choisir un model</option>
+                                <option value="PETIT">PETIT MODEL</option>
+                                <option value="GRAND">GRAND MODEL</option>
+                                <option value="STANDART">STANDART</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        <label for="type">Type de boisson</label>
+                        <select name="type" id="type" class="form-control" [(ngModel)]="boisson.type" name="type">
+                            <option value="" selected>Choisis un type de boisson</option>
+                            <option value="JUS">JUS</option>
+                            <option value="BIERE">BIERE</option>
+                            <option value="EAU">EAU</option>
+                            <option value="AUTRE">AUTRE</option>
+                            </select>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
