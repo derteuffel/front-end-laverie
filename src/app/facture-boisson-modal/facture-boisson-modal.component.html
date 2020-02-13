@@ -1,0 +1,35 @@
+<div id="modal-content-wrapper">
+        <form (ngSubmit)="onSubmit()">
+        <header id="modal-header" style="height: 50px!important">
+            <h3 id="modal-title">Nouvelle conso</h3>
+        </header>
+        <section id="modal-body">
+            
+                        <div class="form-group">
+                        <label for="name">Nom de la boisson</label>
+                        <select name="name" id="name" class="form-control" [(ngModel)]="article.name" >
+                                <option *ngFor="let boisson of boissons| async " [value]="boisson.name">{{boisson.name}}</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantite">Nombre de bouteille</label>
+                            <input type="number" class="form-control" id="quantite" required [(ngModel)]="article.quantite" name="quantite">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model </label>
+                            <select name="model" id="model" class="form-control" [(ngModel)]="article.model" name="model">
+                                <option value="" selected>Choisir un model</option>
+                                <option value="PETIT">PETIT MODEL</option>
+                                <option value="GRAND">GRAND MODEL</option>
+                                <option value="STANDART">STANDART</option>
+                            </select>
+                        </div>
+                       
+                    
+         </section>
+        <footer id="modal-footer">
+            <button mat-raised-button class="btn btn-danger"  (click)="closeModal()"><i class="fa fa-long-arrow-left"></i> Retour</button>
+            <button mat-raised-button  class="btn btn-success pull-right"  type="submit">Enregistrer <i class="fa fa-check"></i></button>
+        </footer>
+    </form>               
+    </div>

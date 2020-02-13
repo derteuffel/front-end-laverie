@@ -6,6 +6,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { CommonModule } from '@angular/common'; 
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -21,6 +23,7 @@ import { AddBoissonListComponent } from './add-boisson-list/add-boisson-list.com
 import { AjoutUpdateComponent } from './ajout-update/ajout-update.component';
 import { FactureBoissonListComponent } from './facture-boisson-list/facture-boisson-list.component';
 import { FactureBoissonDetailComponent } from './facture-boisson-detail/facture-boisson-detail.component';
+import { FactureBoissonModalComponent } from './facture-boisson-modal/facture-boisson-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { FactureBoissonDetailComponent } from './facture-boisson-detail/facture-
     AddBoissonListComponent,
     AjoutUpdateComponent,
     FactureBoissonListComponent,
-    FactureBoissonDetailComponent
+    FactureBoissonDetailComponent,
+    FactureBoissonModalComponent
     
   ],
   imports: [
@@ -43,10 +47,13 @@ import { FactureBoissonDetailComponent } from './facture-boisson-detail/facture-
     AngularMaterialModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [FactureBoissonModalComponent]
 })
 export class AppModule { }
