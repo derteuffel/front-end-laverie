@@ -30,9 +30,7 @@ export class FactureBoissonModalComponent implements OnInit {
   ngOnInit() {
 
     this.id = +window.localStorage.getItem("facId");
-
     this.article = new Article();
-    this.boissons = this.boissonService.getBoissonList();
 
   }
 
@@ -60,6 +58,5 @@ export class FactureBoissonModalComponent implements OnInit {
         this.closeModal();
       }, error => console.log(error));
 
-      this.router.navigate(['facture-boisson-detail'])
     }
 }

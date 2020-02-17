@@ -41,7 +41,7 @@
                                 <td>{{item.montantTotal}}</td>
                                 <td>
                                     <button (click)='detailFacture(item)' class=" tb_btn btn btn-success  mx-2"><i class="fa fa-eye"></i></button>
-                                    <button   class="tb_btn btn btn-danger  mx-2"  ><i class="fa fa-close "></i></button> 
+                                    <button  (click)='deleteFacture(item.id)'  class="tb_btn btn btn-danger  mx-2"  ><i class="fa fa-close "></i></button> 
                                 </td>
                                 
                             </tr>

@@ -48,4 +48,12 @@ export class FactureBoissonListComponent implements OnInit {
     this.router.navigate(['facture-boisson-detail']);
 
   }
+
+  deleteFacture(id: number): void{
+    this.services.delete(id)
+    .subscribe(data => {
+      console.log(data);
+      this.reloadData();
+    }, error => console.log(error));
+  }
 }

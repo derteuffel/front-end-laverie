@@ -5,11 +5,55 @@
         <div class="card ">
             <div class="card-header row" style="margin: 15px">
                 <div class="col-md-6 py-3">
-                    <h3>Table Numero :  <span>{{facture.numTable}}</span></h3>
+                    <h3>Table Numero :  <span class="badge badge-primary">{{facture.numTable}}</span></h3>
                 </div>
                 <div class="col-md-6 text-center">
                    <h3>{{facture.titreFacture}}</h3>
                 </div>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                <table class=" display table table-striped text-center table-hover">
+                    <thead>
+                        <th>
+                            <label for="name">Nom de la boisson</label>
+                        </th>
+                        <th>
+                                <label for="quantite">Nombre de bouteille</label>
+                        </th>
+                        <th>
+                                <label for="model">Model </label>
+                        </th>
+                        <th> Action</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                                <td>
+                                        <div class="form-group">
+                                            <select name="name" id="name" class="form-control" [(ngModel)]="article.name" >
+                                                <option *ngFor="let boisson of boissons| async " [value]="boisson.name">{{boisson.name}}</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                            <div class="form-group">
+                                                    <input type="number" class="form-control" id="quantite" required [(ngModel)]="article.quantite" name="quantite">
+                                            </div>
+                                    </td>
+                                    <td><div class="form-group">
+                                            <select name="model" id="model" class="form-control" [(ngModel)]="article.model" name="model">
+                                                <option value="" selected>Choisir un model</option>
+                                                <option value="PETIT">PETIT MODEL</option>
+                                                <option value="GRAND">GRAND MODEL</option>
+                                            </select>
+                                        </div></td>
+                                    <td>
+                                            <button  type="submit" class="btn btn-primary">Ajouter une conso <i class="fa fa-plus"></i></button>
+                                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
             </div>
         </div>
         <div class="card mt-1">
@@ -42,7 +86,34 @@
                     maxSize="4">
                     </pagination-controls>
         </div>
-        <br>
-        <button (click)='openModal()' type="button" class="btn btn-primary">Ajouter une conso <i class="fa fa-plus"></i></button>
-        
+        <br><br>
+        <div class="card ">
+            <div class="row panel panel-defaul m-2">
+                <div id="form" class="col-md-3  text-center">
+                        <div class="form-group">
+                            <label for="montantVerser">Montant verser <br>(FCFA)</label>
+                            <input type="number" class="form-control" (keyup)='onInput($event)' >
+                        </div>
+                </div>
+                <div class="col-md-3 text-center">
+                        <div class="form-group">
+                           <label for="montantRembourser">Montant a rembourser <br>(FCFA) </label>
+                           <br> 
+                            <span>{{rembourser}}</span>
+                        </div>
+                </div>
+                <div class="col-md-3 text-center">
+                        <div class="form-group">
+                            <label for="montantTotal">Montant total <br>(FCFA)  </label>
+                            <br> 
+                            <span>{{total}}</span>
+                        </div>
+                </div>
+                <div class="col-md-3 text-center">
+                        <div class="form-group p-3">
+                            <button class="btn btn-secondary  btn-lg" type="button"><i class="fa fa-print"></i> Facture</button>
+                        </div>
+                </div>
+            </div>
+        </div>
     </div>

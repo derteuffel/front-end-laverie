@@ -9,6 +9,7 @@ import { Boisson } from '../_models/boisson';
 import { FactureBoissonModalComponent } from '../facture-boisson-modal/facture-boisson-modal.component';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { BoissonService } from '../_services/boisson.service';
 
 @Component({
   selector: 'app-facture-boisson-detail',
@@ -17,25 +18,34 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class FactureBoissonDetailComponent implements OnInit {
 
+  val: number;
   id: number;
   facture: FactureBoisson;
   articles: Observable<Article[]>;
+  boissons: Observable<Boisson[]>;
+  rembourser: number;
+  total: number;
+  article: Article = new Article();
 
 
 
   constructor(private router: Router,
     private services: FactureBoissonService,
     private articleService: ArticleService,
-    private matDialog: MatDialog) { }
+    private matDialog: MatDialog,
+    private boissonService: BoissonService) { }
 
   ngOnInit() {
-    this.facture = new FactureBoisson();
     this.id = +window.localStorage.getItem("itemId");
+    this.article = new Article();
     this.reloadData(this.id);
+    this.boissons = this.boissonService.getBoissonList();
+
     this.services.getOne(this.id)
       .subscribe(data => {
         console.log(data);
         this.facture=data;
+        this.total = this.facture.montantTotal;
       }, error => console.log(error)  
       );
   }
@@ -76,4 +86,29 @@ export class FactureBoissonDetailComponent implements OnInit {
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(FactureBoissonModalComponent, dialogConfig);
   }
+
+  
+
+  onInput(event:any){
+    this.val = event.target.value;
+    this.total = this.facture.montantTotal;
+    this.rembourser = this.val - this.total;
+    this.services.getAmount(this.id,this.val)
+    .subscribe(data => {
+      console.log(data);
+      this.reloadData(this.id);
+    }, error => console.log(error));
+  }
+  onSubmit(){
+    this.add();  
+    }
+
+    add(){
+      this.articleService.add(this.id,this.article)
+      .subscribe(data => {
+        console.log(data);
+      this.reloadData(this.id);
+      }, error => console.log(error));
+      this.article = new Article();
+    }
 }
